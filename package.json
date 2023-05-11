@@ -16,6 +16,10 @@
     "name": "ArcticData",
     "email": "hello@datarc.cn"
   },
+  "keywords": [
+    "react",
+    "table"
+  ],
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.com"
