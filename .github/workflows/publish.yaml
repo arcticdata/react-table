@@ -1,9 +1,10 @@
 name: Publish Package to npmjs
+
 on:
-  on:
-    push:
-      tags:
-        - "*"
+  push:
+    tags:
+      - "*"
+
 jobs:
   build:
     runs-on: ubuntu-latest
