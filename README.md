@@ -26,6 +26,4 @@ React 18+
 
 ## 相关链接
 
-- npm: https://www.npmjs.com/package/ali-react-table
-- GitHub: https://github.com/arcticdata/react-table
-- 表格组件介绍: https://zhuanlan.zhihu.com/p/130755755
+- [高性能 React 表格组件](https://zhuanlan.zhihu.com/p/130755755)
