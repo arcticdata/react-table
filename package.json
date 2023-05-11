@@ -16,6 +16,10 @@
     "name": "ArcticData",
     "email": "hello@datarc.cn"
   },
+  "publishconfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.com"
+  },
   "scripts": {
     "watch": "rollup --config rollup.config.js --watch",
     "build": "rimraf dist/ && rollup --config rollup.config.js",
