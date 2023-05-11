@@ -9,12 +9,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arcticdata/table.git"
+    "url": "git+https://github.com/arcticdata/react-table.git"
   },
-  "homepage": "https://github.com/arcticdata/table",
+  "homepage": "https://github.com/arcticdata/react-table",
   "author": {
-    "name": "Shi Feichao",
-    "email": "842351815@qq.com"
+    "name": "ArcticData",
+    "email": "hello@datarc.cn"
   },
   "scripts": {
     "watch": "rollup --config rollup.config.js --watch",
@@ -52,6 +52,6 @@
     "rollup": "^2.3.1",
     "rollup-plugin-typescript2": "^0.31.0",
     "typescript": "~4.2",
-    "xlsx": "^0.16.0"
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
   }
 }
