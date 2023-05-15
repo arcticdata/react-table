@@ -1,7 +1,7 @@
 {
   "name": "@arcticdata/react-table",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.5",
   "description": "react-table monorepo",
   "license": "MIT",
   "workspaces": [
