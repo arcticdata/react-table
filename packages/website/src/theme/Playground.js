@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
-import usePrismTheme from '@theme/hooks/usePrismTheme'
+import { usePrismTheme } from '@docusaurus/theme-common'
 import styled from 'styled-components'
 
 const PlaygroundHeaderDiv = styled.div`

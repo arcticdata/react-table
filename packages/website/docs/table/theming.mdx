@@ -10,7 +10,7 @@ title: 表格主题
 BaseTable 默认只提供了亮色主题，下面的 WebsiteBaseTable.tsx 展示了在文档网站中，我们是如何实现暗色主题的：
 
 ```typescript title="WebsiteBaseTable.tsx"
-import useThemeContext from '@theme/hooks/useThemeContext'
+import { useColorMode } from '@docusaurus/theme-common'
 import { BaseTable, BaseTableProps } from 'ali-react-table'
 import cx from 'classnames'
 import React from 'react'
@@ -32,7 +32,7 @@ const DarkSupportBaseTable: any = styled(BaseTable)`
 `
 
 export const WebsiteBaseTable = React.forwardRef<BaseTable, BaseTableProps>((props, ref) => {
-  const { isDarkTheme } = useThemeContext()
+  const { isDarkTheme } = useColorMode()
 
   return <DarkSupportBaseTable ref={ref} className={cx({ dark: isDarkTheme }, props.className)} {...props} />
 })
@@ -77,7 +77,7 @@ function 主题切换示例() {
     Table = assets.HippoBaseTable
   }
 
-  const { isDarkTheme } = useThemeContext()
+  const { isDarkTheme } = useColorMode()
 
   return (
     <div>

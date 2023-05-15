@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { WebsiteBaseTable } from 'assets/WebsiteBaseTable'
-import useThemeContext from '@theme/hooks/useThemeContext'
+import {useColorMode} from '@docusaurus/theme-common'
 import ReactInspector from 'react-inspector'
 
 export const DetailDiv = styled.div`
@@ -42,7 +42,7 @@ export const StyledWebsiteBaseTable = styled(WebsiteBaseTable)`
 `
 
 export function Inspector(props) {
-  const { isDarkTheme } = useThemeContext()
+  const { isDarkTheme } = useColorMode()
 
   if (typeof window === 'undefined') {
     return null

@@ -1,5 +1,5 @@
 // @ts-ignore
-import useThemeContext from '@theme/hooks/useThemeContext'
+import {useColorMode} from '@docusaurus/theme-common'
 import { BaseTable, BaseTableProps } from 'ali-react-table'
 import cx from 'classnames'
 import React from 'react'
@@ -23,7 +23,7 @@ const DarkSupportBaseTable: any = styled(BaseTable)`
 `
 
 export const WebsiteBaseTable = React.forwardRef<BaseTable, BaseTableProps>((props, ref) => {
-  const { isDarkTheme } = useThemeContext()
+  const { isDarkTheme } = useColorMode()
 
   return <DarkSupportBaseTable ref={ref} className={cx({ dark: isDarkTheme }, props.className)} {...props} />
 })
