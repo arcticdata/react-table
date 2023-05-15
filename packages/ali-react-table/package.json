@@ -13,8 +13,8 @@
   },
   "homepage": "https://github.com/arcticdata/react-table",
   "author": {
-    "name": "Shi Feichao",
-    "email": "842351815@qq.com"
+    "name": "ArcticData",
+    "email": "hello@datarc.cn"
   },
   "scripts": {
     "watch": "rollup --config rollup.config.js --watch",
