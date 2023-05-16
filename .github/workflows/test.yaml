@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ master ]
 
+defaults:
+  run:
+    working-directory: ./packages/ali-react-table
+
 jobs:
   build:
 
@@ -13,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [ 18.x ]
 
     steps:
       - uses: actions/checkout@v3
