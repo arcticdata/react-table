@@ -5,6 +5,10 @@ on:
     tags:
       - "*"
 
+defaults:
+  run:
+    working-directory: ./packages/ali-react-table
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,8 +20,6 @@ jobs:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.com'
 
-
-      - run: cd ./packages/ali-react-table
       - run: npm ci
 
       # Setup .npmrc file to publish to npm
