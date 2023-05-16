@@ -7,3 +7,9 @@
 `npm install @arcticdata/react-table`
 
 **详见 [README](./packages/ali-react-table/README.md)**
+
+error log
+
+## start:website: error:0308010C:digital envelope routines::unsupported
+node17+ 版本使用 openSSL3.0 版本，对部分库造成了影响
+
