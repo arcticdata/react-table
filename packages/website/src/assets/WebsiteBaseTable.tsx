@@ -23,7 +23,7 @@ const DarkSupportBaseTable: any = styled(BaseTable)`
 `
 
 export const WebsiteBaseTable = React.forwardRef<BaseTable, BaseTableProps>((props, ref) => {
-  const { isDarkTheme } = useColorMode()
+  const isDarkTheme = useColorMode().colorMode === "dark"
 
   return <DarkSupportBaseTable ref={ref} className={cx({ dark: isDarkTheme }, props.className)} {...props} />
 })

@@ -1,5 +1,5 @@
-import { ArtColumn, BaseTable } from 'ali-react-table'
-import { Button, Radio, Switch, Typography } from 'antd'
+import { ArtColumn, BaseTable, useTablePipeline } from 'ali-react-table'
+import { Button, Radio, Switch, Typography, InputNumber } from 'antd'
 import cx from 'classnames'
 import numeral from 'numeral'
 import React, { useEffect, useReducer, useRef, useState } from 'react'
@@ -117,6 +117,8 @@ const AppDivAppDiv = styled.div.withConfig({
 `
 
 export function DemoApp() {
+  const tableRef = useRef(null)
+
   const footerDataSource = [
     {
       confirmedCount: 50000,
@@ -189,6 +191,33 @@ export function DemoApp() {
 
   if (typeof document === 'undefined') {
     return null
+  }
+
+  const data = hasData ? (useBigData ? repeat(dataSource, 5) : dataSource) : []
+
+  data.forEach((item, i) => {
+    item.id = i
+  })
+
+  const pipeline = useTablePipeline()
+    .input({dataSource: data, columns: [
+        { code: 'id', name: '序号', width: 50, lock: leftLock },
+        { code: 'provinceName', name: '省份', width: 150, lock: leftLock },
+        { code: 'cityName', name: '城市', width: 150 },
+        ...repeat<ArtColumn>(
+          [
+            { code: 'confirmedCount', name: '确诊', width: 100, render: amount, align: 'right' },
+            { code: 'curedCount', name: '治愈', width: 100, render: amount, align: 'right' },
+            { code: 'deadCount', name: '死亡', width: 100, render: amount, align: 'right' },
+          ],
+          useBigData ? 40 : 10,
+        ),
+        { code: 'updateTime', name: '更新时间', width: 150, lock: rightLock },
+      ]})
+    .primaryKey("id")
+
+  const jumpTo = (v) => {
+    tableRef.current.scrollTo({ rowKey: v, offset: -32 })
   }
 
   return (
@@ -293,6 +322,10 @@ export function DemoApp() {
               </Radio.Group>
               <div>表格主题</div>
             </div>
+            <div className="item">
+              <InputNumber onChange={jumpTo} max={data.length} disabled={data.length === 0} />
+              <div>跳转到指定行</div>
+            </div>
           </div>
         )}
 
@@ -302,6 +335,7 @@ export function DemoApp() {
       </div>
 
       <BaseTableComponent
+        ref={tableRef}
         className={cx('bordered', 'compact', { dark: theme.includes('dark') })}
         isStickyHeader={isStickyHeader}
         isStickyFooter={isStickyFooter}
@@ -311,20 +345,7 @@ export function DemoApp() {
         hasStickyScroll={hasStickyScroll}
         stickyScrollHeight={hasCustomScrollbar ? 10 : 'auto'}
         hasHeader={hasHeader}
-        columns={[
-          { code: 'provinceName', name: '省份', width: 150, lock: leftLock },
-          { code: 'cityName', name: '城市', width: 150 },
-          ...repeat<ArtColumn>(
-            [
-              { code: 'confirmedCount', name: '确诊', width: 100, render: amount, align: 'right' },
-              { code: 'curedCount', name: '治愈', width: 100, render: amount, align: 'right' },
-              { code: 'deadCount', name: '死亡', width: 100, render: amount, align: 'right' },
-            ],
-            useBigData ? 40 : 10,
-          ),
-          { code: 'updateTime', name: '更新时间', width: 150, lock: rightLock },
-        ]}
-        dataSource={hasData ? (useBigData ? repeat(dataSource, 5) : dataSource) : []}
+        {...pipeline.getProps()}
         footerDataSource={hasFooter ? footerDataSource : []}
       />
     </AppDivAppDiv>

@@ -42,7 +42,7 @@ export const StyledWebsiteBaseTable = styled(WebsiteBaseTable)`
 `
 
 export function Inspector(props) {
-  const { isDarkTheme } = useColorMode()
+  const isDarkTheme = useColorMode().colorMode === "dark"
 
   if (typeof window === 'undefined') {
     return null
