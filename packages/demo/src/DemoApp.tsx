@@ -217,7 +217,7 @@ export function DemoApp() {
     .primaryKey("id")
 
   const jumpTo = (v) => {
-    tableRef.current.scrollTo({ rowKey: v, offset: -32 })
+    tableRef.current.scrollToRowIndex(v, -32)
   }
 
   return (
