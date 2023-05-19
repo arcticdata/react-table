@@ -26,7 +26,7 @@
   },
   "scripts": {
     "watch": "rollup --config rollup.config.js --watch",
-    "build": "rimraf dist/ && rollup --config rollup.config.js",
+    "build": "rimraf dist/ && rollup --config rollup.config.js --bundleConfigAsCjs",
     "preversion": "npm run build",
     "prepublishOnly": "npm run build"
   },
